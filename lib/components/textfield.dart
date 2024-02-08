@@ -3,15 +3,15 @@ import "../colors/colors.dart";
 
 // text field used from other homework
 
-class myTextField extends StatelessWidget {
-  // final controller;
+class MyTextField extends StatelessWidget {
+  final controller;
   final String hintText;
   final bool obscureText;
 
 
-  const myTextField({
+  const MyTextField({
     super.key,
-    // required this.controller,
+    required this.controller,
     required this.hintText,
     required this.obscureText,
     });
@@ -22,7 +22,7 @@ class myTextField extends StatelessWidget {
     return  Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25.0),
             child: TextField(
-              // controller: controller,
+              controller: controller,
               obscureText: obscureText,
               decoration: InputDecoration(
                 enabledBorder: const OutlineInputBorder(

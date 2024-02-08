@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import "colors/colors.dart";
 import 'components/textfield.dart';
@@ -12,11 +13,17 @@ class LoginPage extends StatelessWidget {
 
   // sign the user in 
 
-  void signUserIn(){}
+  void signUserIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: AppColors.lightBrown,
       body: SafeArea(
         child: Center(
@@ -25,10 +32,10 @@ class LoginPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
 
-              SizedBox(height: 200), 
+              const SizedBox(height: 200), 
               // Login text
               // optional logo or something around here
-              Text(
+              const Text(
                 'Login',
                 style: TextStyle(
                   color: AppColors.grayBlue,
@@ -36,31 +43,29 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: 10), 
+              const SizedBox(height: 10), 
 
               // email field / alternatively can do username field
-              myTextField(
-                // need a controller here that i have commented out
-                // controller: emailController,
+              MyTextField(
+                controller: emailController,
                 hintText: "Email", 
                 obscureText: false,
               ),
 
-              SizedBox(height: 10), 
+              const SizedBox(height: 10), 
 
               // password field
 
-              myTextField(
-                // need a controller here that i have commented out
-                // controller: passwordController,
+              MyTextField(
+                controller: passwordController,
                 hintText: "Password", 
                 obscureText: true,
               ),
 
-              SizedBox(height: 10), 
+              const SizedBox(height: 10), 
 
               // forgot password
-              Padding(
+              const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -73,21 +78,21 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(height: 20), 
+                const SizedBox(height: 20), 
 
                 // sign in button
                 Button(
                   text: 'Sign In',
-                  // onTap: signUserIn,
+                  onTap: signUserIn,
                 ),
 
-                SizedBox(height: 200),
+                const SizedBox(height: 200),
                 // or continue with i am not adding this unless we discuss something else
 
 
 
               // line above the sign up
-              Row(
+              const Row(
                 children: [
                   Expanded(
                     child: Divider(
@@ -99,20 +104,20 @@ class LoginPage extends StatelessWidget {
                 ],
               ),
 
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               // not a member create an account 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Don\'t have an account?',
                       style: TextStyle(color: AppColors.cloudBlue),
                     ),
-                    SizedBox(width: 4),
-                    // GestureDetector(
+                    const SizedBox(width: 4),
+                    GestureDetector(
                       // onTap: widget.onTap,
-                      // child: 
-                      Text(
+                      child: 
+                      const Text(
                         'Sign up',
                         style :TextStyle(
                           color: AppColors.skyBlue,
@@ -121,10 +126,10 @@ class LoginPage extends StatelessWidget {
                         
                       ),
 
-                    // ),
+                    ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 
               ],

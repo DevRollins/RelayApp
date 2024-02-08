@@ -3,12 +3,12 @@ import "../colors/colors.dart";
 
 class Button extends StatelessWidget {
 
-  // final Function()? onTap;
+  final Function()? onTap;
   final String text;
 
   const Button({
     super.key,
-    // required this.onTap,
+    required this.onTap,
     required this.text,
    });
 
@@ -16,7 +16,7 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     return GestureDetector(
-      // onTap: onTap,
+      onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(25),
         margin: const  EdgeInsets.symmetric(horizontal: 25),
