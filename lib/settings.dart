@@ -1,110 +1,125 @@
 import 'package:flutter/material.dart';
+import 'package:relay_app/auth.dart';
+import 'package:relay_app/components/settings_button.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(SettingsPage());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
 
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Settings Page',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const SettingsPage(),
-    );
-  }
-}
 
-class SettingsPage extends StatefulWidget{
-  const SettingsPage({super.key});
+class SettingsPage extends StatefulWidget {
+  SettingsPage({super.key});
 
   @override
-  State<SettingsPage> createState() => _SettingsPage();
+  State<SettingsPage> createState() => _SettingsPageState();
 }
 
-class _SettingsPage extends State<SettingsPage> {
-  String _username = "Dev";
+class _SettingsPageState extends State<SettingsPage> {
+  final usernameController = TextEditingController();
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _username;
+  
+  void changePicture() async {
+   showDialog(context: context, builder: (context){
+    return AuthPage();
+     
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+
     return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: const Text("Settings Page")
-      ),
-      body: Center(
-        
+      body: SafeArea(
         child: Column(
-          
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            const Text(
-              'Profile',
-            ),
-            TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: '$_username',
-            ),
-            ),
-            const Text(
-              'BIO',
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'BIO',
+          children: [
+            Text(
+                'Setting\'s Page',
+                style: TextStyle(
+                  color: Colors.grey[700],
+                  fontSize: 50,
+                ),
               ),
+
+              Text(
+                'Profile',
+                style: TextStyle(
+                  color: Colors.grey[700],
+                  fontSize: 25,
+                ),
               ),
-            ),
-            const Text(
-              'Profile Picture',
-            ),
-            const Text(
-              
-              'Color Scheme',
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+
+              Row(children: [
+                Text(
+                'PUT A FUCKING PICTURE HERE',
+                style: TextStyle(
+                  color: Colors.grey[700],
+                  fontSize: 15,
+                ),
+                ),
+
+                //make a button and align to end
+                
+              ],),
+
+              Row(children: [
+                Text(
+                'Name: Dev',
+                style: TextStyle(
+                  color: Colors.grey[700],
+                  fontSize: 15,
+                ),
+                ),
+
+                //make a button and align to end
+              ],),
+
+              Row(children: [
+                Text(
+                'Bio: Sup Nigga',
+                style: TextStyle(
+                  color: Colors.grey[700],
+                  fontSize: 15,
+                ),
+                ),
+
+                //make a button and align to end
+              ],),
+
+              Text(
+                'Account',
+                style: TextStyle(
+                  color: Colors.grey[700],
+                  fontSize: 25,
+                ),
+              ),
+
+              Row(children: [
+                Text(
+                'Email: devR@gmail.com',
+                style: TextStyle(
+                  color: Colors.grey[700],
+                  fontSize: 15,
+                ),
+                ),
+
+                //make a button and align to end
+              ],),
+
+              Row(children: [
+                Text(
+                'IP Adress: 758-79-2301',
+                style: TextStyle(
+                  color: Colors.grey[700],
+                  fontSize: 15,
+                ),
+                ),
+
+                //make a button and align to end
+              ],),
+
+          ]),)
+
     );
   }
 }
-
-
-
